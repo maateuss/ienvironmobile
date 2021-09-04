@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="iemobile.Pages.SensorPage">
+    <ContentPage.Content>
+            <Grid VerticalOptions="FillAndExpand"  BackgroundColor="{StaticResource CustomBlackMedium}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+                <Grid Margin="10,10,0,0"  BackgroundColor="{StaticResource CustomBlackMedium}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ffimage:SvgCachedImage  HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"  Source="resource://iemobile.Resources.Voltar.svg" />
+                    <Button BackgroundColor="Transparent" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding GoBackCommand}"/>
+                <Label  Grid.Column="1" Margin="15"  Text="Gerenciamento"/>
+                    <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Column="2"/>
+                </Grid>
+            <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <CollectionView ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding AmbientesList}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"/>
+            </CollectionView.ItemsLayout>
+
+                   
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10,5,0,5" MinimumWidthRequest="200" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame CornerRadius="25" Grid.ColumnSpan="2" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="https://picsum.photos/200" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="50,50" RadiusX="10" RadiusY="10"/>
+                                            </Image.Clip>
+                                    </Image>
+                                    <Label Text="Sala xyz"/>
+                                </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+              </CollectionView>
+                </Grid>
+                <ScrollView Grid.Row="2">
+                    <StackLayout>
+
+                <Label Text="Dados do Ambiente" FontSize="Subtitle" FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="15"/>
+                <CollectionView HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding SensorList}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                               <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10"/>
+                                <Label Text="{Binding ValorFormatado}"/>
+                                <Label Grid.Row="1" Text="{Binding Nome}"/>
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="Equipamentos" FontSize="Subtitle" FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="15"/>
+                   <CollectionView HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding AmbientesList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
+                               
+                            </Frame>
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="Eventos" FontSize="Subtitle"  FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="15"/>
+                       <CollectionView HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding AmbientesList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}" >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                                   <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
+                               
+                            </Frame>
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                        </StackLayout>
+                </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

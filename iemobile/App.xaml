@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iemobile.App">
+    <Application.Resources>
+       <Color x:Key="CustomPink">#D53F8C</Color>
+       <Color x:Key="CustomWhite">#F4EDE8</Color>
+       <Color x:Key="CustomGray">#B3B5C6</Color>
+       <Color x:Key="CustomGrayHard">#666360</Color>
+       <Color x:Key="CustomShape">#3E3B47</Color>
+       <Color x:Key="CustomBlackMedium">#1F2029</Color>
+       <Color x:Key="CustomBackground">#181B23</Color>
+       <Color x:Key="CustomInputs">#232129</Color>
+
+
+       <OnPlatform x:TypeArguments="Color" x:Key="ActivityIndicatorColor" Android="{StaticResource CustomPink}" iOS="{ StaticResource CustomPink }" />
+       <OnPlatform x:TypeArguments="Color" x:Key="DefaultButtonClassBackgroundColor" Android="{ StaticResource CustomPink }" iOS="{ StaticResource CustomPink }" />
+       <OnPlatform x:TypeArguments="Color" x:Key="DefaultButtonClassBorderColor" Android="{ StaticResource CustomPink }" iOS="{ StaticResource CustomPink }" />
+       <OnPlatform x:TypeArguments="Color" x:Key="DefaultButtonClassTextColor" Android="{ StaticResource CustomBackground }" iOS="{ StaticResource CustomBackground }" />
+       <OnPlatform x:TypeArguments="Color" x:Key="EntryBackgroundColor" Android="{ StaticResource CustomInputs }" iOS="{ StaticResource CustomInputs }" />
+       <OnPlatform x:TypeArguments="Color" x:Key="ThemeListViewBackgroundColor" Android="{ StaticResource CustomBackground }" iOS="{ StaticResource CustomBackground }" />
+
+        <Style TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{StaticResource CustomBackground}"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource CustomWhite}"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource CustomInputs}"/>
+            <Setter Property="HasShadow" Value="False"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0,10"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Visual" Value="Material"/>
+            <Setter Property="TextColor" Value="{StaticResource CustomWhite}"/>
+            <Setter Property="Keyboard" Value="Email"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}"/>
+            <Setter Property="TextColor" Value="{StaticResource CustomInputs}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+    </Application.Resources>
+</Application>

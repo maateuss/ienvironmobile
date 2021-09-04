@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="AmbientesPage"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="iemobile.Pages.MainPage">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand"  BackgroundColor="{StaticResource CustomBlackMedium}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+                <Grid Margin="10,10,0,0"  BackgroundColor="{StaticResource CustomBlackMedium}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Bem vindo," HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
+                    <Label Text="Matheus Alberto" TextColor="{StaticResource CustomPink}" Grid.Row="1" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+                    <ffimage:SvgCachedImage  Grid.Column="1" Margin="15" Grid.RowSpan="2" Source="resource://iemobile.Resources.qrcode.svg" />
+                    <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2" Grid.Column="2"/>
+                </Grid>
+            <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
+                   <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Ambientes" FontSize="Title" FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="15"/>
+                <CollectionView VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding AmbientesList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}"  Grid.Row="1" Grid.ColumnSpan="2">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,10">
+                            <Frame BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference AmbientesPage}, Path=BindingContext.SelectedAmbienteCommand}" CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                <Grid BackgroundColor="Transparent">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="1" TextColor="{StaticResource CustomWhite}" VerticalOptions="EndAndExpand" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Text="{Binding NomeAmbiente}" FontAttributes="Bold" />
+                                    <Image VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="{Binding ImageSource}" Grid.RowSpan="2">
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="50,50" RadiusX="30" RadiusY="30"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <Label MaxLines="3" VerticalOptions="StartAndExpand" TextColor="{StaticResource CustomGray}" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" FontSize="Small" Grid.Column="1" Grid.Row="1" LineBreakMode="TailTruncation" Text="{Binding DescricaoAmbiente}"/> 
+                                </Grid>
+                            </Frame>
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

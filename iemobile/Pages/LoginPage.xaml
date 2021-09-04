@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="iemobile.Pages.LoginPage"
+    xmlns:viewModels="clr-namespace:iemobile.ViewModels"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,15">
+       <Grid.RowDefinitions>
+           <RowDefinition Height="2*"/>
+           <RowDefinition Height="2*"/>
+           <RowDefinition Height="*"/>
+       </Grid.RowDefinitions>
+        <ffimage:SvgCachedImage WidthRequest="100" Margin="35,10" HeightRequest="100" Source="resource://iemobile.Resources.MainLogo.svg"/>
+
+        <Grid Grid.Row="1" Margin="35,0">
+            <Label Text="Faça seu login" ></Label>
+              <Frame Grid.Row="1">
+                  <Grid BackgroundColor="Transparent">
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="✉️" Opacity="0.5"/>
+                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="E-mail"/>
+                  </Grid>
+
+            </Frame>
+              <Frame Grid.Row="2">
+                  <Grid BackgroundColor="Transparent">
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="🔓" Opacity="0.5"/>
+                     <Entry Grid.Column="1"  Placeholder="Senha" IsPassword="True"/>
+                  </Grid>
+              </Frame>
+              <Button Text="Entrar" Grid.Row="3" Command="{Binding LoginCommand}"/>
+              <Label Text="Esqueci minha senha" Grid.Row="4"/>
+          </Grid>
+       <Label Text="Criar uma conta" Grid.Row="2" VerticalTextAlignment="End" TextColor="{StaticResource CustomPink}"/>
+   </Grid>
+</ContentPage>

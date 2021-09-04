@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="FreshMvvm" Version="4.0.1" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Xamarin.FFImageLoading.Svg" />
+    <None Remove="Xamarin.FFImageLoading.Svg.Forms" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\MainLogo.svg" />
+    <None Remove="Pages\" />
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="Resources\qrcode.svg" />
+    <None Remove="ViewModels\" />
+    <None Remove="FreshMvvm" />
+    <None Remove="Acr.UserDialogs" />
+    <None Remove="PropertyChanged.Fody" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Models\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Services\" />
+    <None Remove="Resources\Sair.svg" />
+    <None Remove="Resources\Voltar.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Pages\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MainLogo.svg" />
+    <EmbeddedResource Include="Resources\qrcode.svg" />
+    <EmbeddedResource Include="Resources\Sair.svg" />
+    <EmbeddedResource Include="Resources\Voltar.svg" />
+  </ItemGroup>
+</Project>
