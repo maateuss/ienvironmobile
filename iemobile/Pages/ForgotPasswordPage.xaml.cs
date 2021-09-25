@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace iemobile.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class ForgotPasswordPage : ContentPage
     {
-        public MainPage()
+        public ForgotPasswordPage()
         {
             InitializeComponent();
-            
+
             NavigationPage.SetHasNavigationBar(this, false);
         }
     }

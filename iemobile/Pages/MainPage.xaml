@@ -5,9 +5,11 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="AmbientesPage"
     xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="iemobile.Pages.MainPage">
+    x:Class="iemobile.Pages.MainPage"
+    BackgroundColor="{StaticResource CustomBlackMedium}"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" >
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand"  BackgroundColor="{StaticResource CustomBlackMedium}">
+        <Grid VerticalOptions="FillAndExpand" Margin="0,20,0,0"  BackgroundColor="{StaticResource CustomBlackMedium}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
@@ -21,7 +23,14 @@
                     <Label Text="Bem vindo," HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
                     <Label Text="Matheus Alberto" TextColor="{StaticResource CustomPink}" Grid.Row="1" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
                     <ffimage:SvgCachedImage  Grid.Column="1" Margin="15" Grid.RowSpan="2" Source="resource://iemobile.Resources.qrcode.svg" />
-                    <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2" Grid.Column="2"/>
+         
+             
+
+                <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2" Grid.Column="2">
+                    <xct:AvatarView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding EditUserCommand}"/>
+                    </xct:AvatarView.GestureRecognizers>
+                </xct:AvatarView>
                 </Grid>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
                    <Grid.ColumnDefinitions>
@@ -40,7 +49,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,10">
-                            <Frame BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
+                            <Frame IsClippedToBounds="True" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference AmbientesPage}, Path=BindingContext.SelectedAmbienteCommand}" CommandParameter="{Binding .}"/>
                                     </Frame.GestureRecognizers>
@@ -54,12 +63,8 @@
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="1" TextColor="{StaticResource CustomWhite}" VerticalOptions="EndAndExpand" VerticalTextAlignment="End" HorizontalTextAlignment="Start" Text="{Binding NomeAmbiente}" FontAttributes="Bold" />
-                                    <Image VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="{Binding ImageSource}" Grid.RowSpan="2">
-                                        <Image.Clip>
-                                            <EllipseGeometry Center="50,50" RadiusX="30" RadiusY="30"/>
-                                        </Image.Clip>
-                                    </Image>
-                                    <Label MaxLines="3" VerticalOptions="StartAndExpand" TextColor="{StaticResource CustomGray}" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" FontSize="Small" Grid.Column="1" Grid.Row="1" LineBreakMode="TailTruncation" Text="{Binding DescricaoAmbiente}"/> 
+                                    <Image Margin="-20,-20,0,-20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="{Binding ImageSource}" Grid.RowSpan="2"/>
+                                        <Label MaxLines="3" VerticalOptions="StartAndExpand" TextColor="{StaticResource CustomGray}" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" FontSize="Small" Grid.Column="1" Grid.Row="1" LineBreakMode="TailTruncation" Text="{Binding DescricaoAmbiente}"/> 
                                 </Grid>
                             </Frame>
                                 </Grid>

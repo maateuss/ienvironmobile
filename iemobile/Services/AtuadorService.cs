@@ -8,7 +8,7 @@ namespace iemobile.Services
 {
     public class AtuadorService : IAtuadorService
     {
-        public async Task<IEnumerable<Atuador>> BuscarAtuadores()
+        public async Task<IEnumerable<Atuador>> BuscarAtuadores(Ambiente ambiente)
         {
             await Task.Delay(15);
 

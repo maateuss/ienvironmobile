@@ -5,13 +5,11 @@ using Xamarin.Forms;
 
 namespace iemobile.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class EditEquipmentPage : ContentPage
     {
-        public MainPage()
+        public EditEquipmentPage()
         {
             InitializeComponent();
-            
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

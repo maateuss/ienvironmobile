@@ -11,6 +11,11 @@ namespace iemobile.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+
+
+        public ICommand SelectedAmbienteCommand { get; }
+        public ICommand EditUserCommand { get; }
+
         public override async void Init(object initData)
         {
             base.Init(initData);
@@ -41,7 +46,30 @@ namespace iemobile.ViewModels
         {
             this.ambienteService = ambienteService;
             SelectedAmbienteCommand = new Command<Ambiente>(async (ambiente) => await SelectedAmbienteAsync(ambiente));
+            EditUserCommand = new Command(async () => await EditUserAsync());
         }
+        private async Task EditUserAsync()
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+            IsBusy = true;
+            try
+            {
+                await CoreMethods.PushPageModel<EditUserViewModel>();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+
 
         private async Task SelectedAmbienteAsync(Ambiente ambiente)
         {
@@ -69,7 +97,6 @@ namespace iemobile.ViewModels
 
         }
 
-        public ICommand SelectedAmbienteCommand { get; }
 
 
     }

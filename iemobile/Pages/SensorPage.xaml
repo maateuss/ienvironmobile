@@ -2,11 +2,14 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="{StaticResource CustomBlackMedium}"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      
     xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Name="GerenciamentoPage"
     x:Class="iemobile.Pages.SensorPage">
     <ContentPage.Content>
-            <Grid VerticalOptions="FillAndExpand"  BackgroundColor="{StaticResource CustomBlackMedium}">
+            <Grid VerticalOptions="FillAndExpand"  Margin="0,20,0,0"   BackgroundColor="{StaticResource CustomBlackMedium}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="auto"/>
@@ -21,7 +24,11 @@
                     <ffimage:SvgCachedImage  HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"  Source="resource://iemobile.Resources.Voltar.svg" />
                     <Button BackgroundColor="Transparent" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding GoBackCommand}"/>
                 <Label  Grid.Column="1" Margin="15"  Text="Gerenciamento"/>
-                    <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Column="2"/>
+                    <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Column="2">
+                    <xct:AvatarView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding EditUserCommand}"/>
+                    </xct:AvatarView.GestureRecognizers>
+                </xct:AvatarView>
                 </Grid>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
                 
@@ -38,18 +45,12 @@
                         <DataTemplate>
                             <Grid Padding="10,5,0,5" MinimumWidthRequest="200" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40"/>
-                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame CornerRadius="25" Grid.ColumnSpan="2" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                                <Frame CornerRadius="25" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Image Source="https://picsum.photos/200" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <Image.Clip>
-                                            <EllipseGeometry Center="50,50" RadiusX="10" RadiusY="10"/>
-                                            </Image.Clip>
-                                    </Image>
-                                    <Label Text="Sala xyz"/>
+                                    <Label Text="{Binding NomeAmbiente}" Margin="10,0" LineBreakMode="TailTruncation" HorizontalTextAlignment="Center" />
                                 </StackLayout>
                                 </Frame>
                             </Grid>
@@ -68,6 +69,9 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                                         <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference GerenciamentoPage}, Path=BindingContext.SelectedDataCommand}" CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
                                <Grid.RowDefinitions>
                                     <RowDefinition Height="100"/>
                                     <RowDefinition Height="30"/>
@@ -80,39 +84,49 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Label Text="Equipamentos" FontSize="Subtitle" FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="15"/>
-                   <CollectionView HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding AmbientesList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}">
+                   <CollectionView HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding AtuadorList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Span="2" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                                         <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference GerenciamentoPage}, Path=BindingContext.SelectedDataCommand}" CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="100"/>
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
-                               
-                            </Frame>
+                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10"/>
+                                    <Label Text="{Binding ValorFormatado}"/>
+                                    <Label Grid.Row="1" Text="{Binding Nome}"/>
+
                                 </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Label Text="Eventos" FontSize="Subtitle"  FontAttributes="Bold" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="15"/>
-                       <CollectionView HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding AmbientesList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}" >
+                       <CollectionView  HeightRequest="200" VerticalScrollBarVisibility="Never"  Margin="15,0" ItemsSource="{Binding EventosList}" SelectionChangedCommand="{Binding SelectedAmbienteCommand}" >
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Span="2" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10">
+                                <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference GerenciamentoPage}, Path=BindingContext.SelectedDataCommand}" CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
                                    <Grid.RowDefinitions>
                                     <RowDefinition Height="100"/>
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10">
-                               
-                            </Frame>
+                                <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10"/>
+                                    
+
+                                    <Label Text="{Binding Icone}"/>
+                                    <Label Grid.Row="1" Text="{Binding Nome}"/>
+
                                 </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

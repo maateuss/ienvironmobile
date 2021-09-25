@@ -5,8 +5,9 @@ using iemobile.Models;
 
 namespace iemobile.Interfaces
 {
-    public interface IAtuadorService
+    public interface IEventoService
     {
-        Task<IEnumerable<Atuador>> BuscarAtuadores(Ambiente ambiente);
+        Task<IEnumerable<Evento>> BuscarEventos(Ambiente ambiente);
+
     }
 }

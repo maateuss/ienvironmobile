@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+     BackgroundColor="{StaticResource CustomBackground}"
+    x:Class="iemobile.Pages.EmailSentPage">
+<ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+           <lottie:AnimationView Grid.Row="1"
+                x:Name="AnimationView" 
+                Animation="email.json" 
+                AutoPlay="True"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
+            <StackLayout Grid.Row="2">
+                <Label Text="Verifique seu e-mail" FontSize="20" />
+                <Label Text="para recuperar a senha" FontSize="20"/>
+            </StackLayout>
+            <Button Command="{Binding VoltarCommand}" Text="Ok" Grid.Row="3" VerticalOptions="Start" Margin="50,10"/>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

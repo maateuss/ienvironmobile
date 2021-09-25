@@ -7,6 +7,7 @@ using Android.OS;
 using FFImageLoading.Forms.Platform;
 using FFImageLoading.Svg.Forms;
 using Acr.UserDialogs;
+using Lottie.Forms.Platforms.Android;
 
 namespace iemobile.Droid
 {
@@ -23,6 +24,7 @@ namespace iemobile.Droid
             CachedImageRenderer.Init(true);
             UserDialogs.Init(this);
             var ignore = typeof(SvgCachedImage);
+            AnimationViewRenderer.Init();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

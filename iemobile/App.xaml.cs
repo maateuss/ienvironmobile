@@ -16,12 +16,15 @@ namespace iemobile
             InitializeComponent();
             InitIoC();
             MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<LoginViewModel>());
+            MainPage.BackgroundColor = Color.FromHex("#181B23");
         }
 
 
         protected void InitIoC() {
             FreshIOC.Container.Register<ISensorService, SensorService>();
             FreshIOC.Container.Register<IAmbienteService, AmbienteService>();
+            FreshIOC.Container.Register<IAtuadorService, AtuadorService>();
+            FreshIOC.Container.Register<IEventoService, EventoService>();
         }
 
 

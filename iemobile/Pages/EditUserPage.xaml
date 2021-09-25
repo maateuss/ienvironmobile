@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="{StaticResource CustomBlackMedium}"
+    x:Class="iemobile.Pages.EditUserPage">
+    <ContentPage.Content>
+           <Grid VerticalOptions="FillAndExpand"  Margin="0,20,0,0"   BackgroundColor="{StaticResource CustomBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+                <Grid  BackgroundColor="{StaticResource CustomBlackMedium}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                         <ffimage:SvgCachedImage  HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"  Source="resource://iemobile.Resources.Voltar.svg" />
+                    <Button BackgroundColor="Transparent" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding GoBackCommand}"/>
+                <Label  Grid.Column="1" Margin="15"  Text="Meu Perfil"/>
+                <Label  Grid.Column="2" Margin="15"  Text="Sair"/>
+                </Grid>
+               <Grid Grid.Row="1" BackgroundColor="{StaticResource CustomBackground}" VerticalOptions="Center" HorizontalOptions="Center">
+                   <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="150"/>
+                   </Grid.ColumnDefinitions>
+                   
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="150"/>
+                   </Grid.RowDefinitions>
+                   <Grid>
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="3.7*"/>
+                       <RowDefinition Height="*"/>
+                   </Grid.RowDefinitions>
+                   <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="3.7*"/>
+                       <ColumnDefinition Width="*"/>
+                   </Grid.ColumnDefinitions>
+                    <xct:AvatarView Text="MS" Size="150" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"  Grid.ColumnSpan="2"/>
+                    <Button Text="📷" Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="15" />
+                   </Grid>
+               </Grid>
+               <ScrollView Grid.Row="2" Margin="20,20,20,0" >
+               <StackLayout  Spacing="5">
+                    <Frame >
+                  <Grid BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                          <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="👤" Opacity="0.5"/>
+                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="Nome"/>
+                  </Grid>
+
+            </Frame>
+             <Frame >
+                  <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="✉️" Opacity="0.5"/>
+                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="E-mail"/>
+                  </Grid>
+
+            </Frame>
+
+              <Frame>
+                  <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="🔓" Opacity="0.5"/>
+                     <Entry Grid.Column="1"  Placeholder="Senha atual" IsPassword="True"/>
+                  </Grid>
+              </Frame>
+                   <Frame>
+                  <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="🔓" Opacity="0.5"/>
+                     <Entry Grid.Column="1"  Placeholder="Nova senha" IsPassword="True"/>
+                  </Grid>
+              </Frame>
+                        <Frame>
+                  <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="🔓" Opacity="0.5"/>
+                     <Entry Grid.Column="1"  Placeholder="Confirmar senha" IsPassword="True"/>
+                  </Grid>
+              </Frame>
+              <Button Text="Confirmar mudanças"  Command="{Binding CadastrarCommand}"/>
+               </StackLayout>
+
+                   </ScrollView>
+       
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

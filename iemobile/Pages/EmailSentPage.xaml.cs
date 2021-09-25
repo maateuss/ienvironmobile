@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace iemobile.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class EmailSentPage : ContentPage
     {
-        public MainPage()
+        public EmailSentPage()
         {
             InitializeComponent();
-            
+
             NavigationPage.SetHasNavigationBar(this, false);
         }
     }

@@ -10,6 +10,7 @@ namespace iemobile.Pages
         public LoginPage()
         {
             InitializeComponent();
+            
             NavigationPage.SetHasNavigationBar(this, false);
         }
     }

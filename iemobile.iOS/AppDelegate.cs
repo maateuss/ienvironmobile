@@ -27,7 +27,7 @@ namespace iemobile.iOS
             CachedImageRenderer.Init();
             var ignore = typeof(SvgCachedImage);
             LoadApplication(new App());
-
+            app.StatusBarStyle = UIStatusBarStyle.LightContent;
             return base.FinishedLaunching(app, options);
         }
     }

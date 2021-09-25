@@ -2,8 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="iemobile.Pages.LoginPage"
+    x:Class="iemobile.Pages.SignUpPage"
+      xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{StaticResource CustomBackground}">
 
@@ -11,16 +11,30 @@
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,15">
        <Grid.RowDefinitions>
            <RowDefinition Height="2*"/>
-           <RowDefinition Height="3*"/>
+           <RowDefinition Height="2*"/>
            <RowDefinition Height="80"/>
        </Grid.RowDefinitions>
         <ffimage:SvgCachedImage WidthRequest="100" Margin="35,10" HeightRequest="100" Source="resource://iemobile.Resources.MainLogo.svg"/>
 
-        <StackLayout Spacing="10" Grid.Row="1" Margin="35,0">
-            <Label Text="Faça seu login" ></Label>
-              <Frame>
+        <StackLayout Margin="35,0" Grid.Row="1">
+            <Label Text="Crie sua conta" FontSize="25" FontAttributes="Bold" Margin="0,0,0,5"/>
+            <Frame >
                   <Grid BackgroundColor="Transparent">
-                       <Grid.RowDefinitions>
+                      <Grid.RowDefinitions>
+                          <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="👤" Opacity="0.5"/>
+                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="Nome"/>
+                  </Grid>
+
+            </Frame>
+             <Frame >
+                  <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
                           <RowDefinition Height="30"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
@@ -32,9 +46,10 @@
                   </Grid>
 
             </Frame>
-              <Frame >
+
+              <Frame>
                   <Grid BackgroundColor="Transparent">
-                              <Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
                           <RowDefinition Height="30"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
@@ -45,16 +60,11 @@
                      <Entry Grid.Column="1"  Placeholder="Senha" IsPassword="True"/>
                   </Grid>
               </Frame>
-              <Button Text="Entrar"  Command="{Binding LoginCommand}"/>
-              <Label Text="Esqueci minha senha" Margin="0,20" >
-                  <Label.GestureRecognizers>
-                      <TapGestureRecognizer Command="{Binding EsqueceuSenhaCommand}"/>
-                  </Label.GestureRecognizers>
-              </Label>
+              <Button Text="Cadastrar"  Command="{Binding CadastrarCommand}"/>
           </StackLayout>
-       <Label Text="Criar uma conta" Grid.Row="2" VerticalTextAlignment="Center" TextColor="{StaticResource CustomPink}">
+       <Label Text="Voltar para o login" Grid.Row="2" VerticalTextAlignment="Center" TextColor="{StaticResource CustomWhite}">
            <Label.GestureRecognizers>
-               <TapGestureRecognizer Command="{Binding CriarContaCommand}"/>
+               <TapGestureRecognizer Command="{Binding VoltarCommand}"/>
            </Label.GestureRecognizers>
        </Label>
    </Grid>
