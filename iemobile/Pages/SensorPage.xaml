@@ -24,11 +24,11 @@
                     <ffimage:SvgCachedImage  HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"  Source="resource://iemobile.Resources.Voltar.svg" />
                     <Button BackgroundColor="Transparent" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding GoBackCommand}"/>
                 <Label  Grid.Column="1" Margin="15"  Text="Gerenciamento"/>
-                    <xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Column="2">
+                    <!--<xct:AvatarView Text="MS" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Column="2">
                     <xct:AvatarView.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding EditUserCommand}"/>
                     </xct:AvatarView.GestureRecognizers>
-                </xct:AvatarView>
+                </xct:AvatarView>-->
                 </Grid>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
                 
@@ -77,7 +77,7 @@
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
                                 <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10"/>
-                                <Label Text="{Binding ValorFormatado}"/>
+                                <Label Text="{Binding ValorFormatado}" MaxLines="3" LineBreakMode="WordWrap"/>
                                 <Label Grid.Row="1" Text="{Binding Nome}"/>
                                 </Grid>
                         </DataTemplate>
@@ -99,7 +99,7 @@
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
                                 <Frame Grid.RowSpan="2" BackgroundColor="{StaticResource CustomShape}" CornerRadius="10"/>
-                                    <Label Text="{Binding ValorFormatado}"/>
+                                    <Label Text="{Binding ValorFormatado}" MaxLines="3" />
                                     <Label Grid.Row="1" Text="{Binding Nome}"/>
 
                                 </Grid>

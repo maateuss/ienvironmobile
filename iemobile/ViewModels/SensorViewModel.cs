@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using iemobile.Interfaces;
 using iemobile.Models;
+using iemobile.Services;
 using Xamarin.Forms;
 
 namespace iemobile.ViewModels
@@ -15,13 +17,57 @@ namespace iemobile.ViewModels
         public ICommand SelectedDataCommand { get; }
         public ICommand EditUserCommand { get; }
 
+        private MqttService mqttService;
+        private object initData;
 
         public override async void Init(object initData)
         {
             base.Init(initData);
 
-            Debug.WriteLine(initData);
+            this.initData = initData;
 
+            Debug.WriteLine(initData);
+            mqttService = new MqttService();
+            await FetchData(initData);
+            MessagingCenter.Subscribe<MqttService, string>(this, "message", (sender, message) =>
+            {
+                var splits = message.Split('|');
+                Device.BeginInvokeOnMainThread(async () =>
+                    await HandleMessage(splits[0],splits[1])
+                );
+            });
+        }
+
+        private async Task HandleMessage(string topic, string message)
+        {
+            if(SensorList.Any(x=>x.Topic == topic))
+            {
+                var sensor = SensorList.FirstOrDefault(x => x.Topic == topic);
+                if(sensor != null)
+                {
+                    var index = SensorList.IndexOf(sensor);
+                    SensorList.RemoveAt(index);
+                    sensor.Valor = message;
+                    SensorList.Insert(index, sensor);
+                }
+            } else if (AtuadorList.Any(x=>x.Topic == topic)) {
+                var atuador = AtuadorList.FirstOrDefault(x => x.Topic == topic);
+                if(atuador != null)
+                {
+                    var index = AtuadorList.IndexOf(atuador);
+                    AtuadorList.RemoveAt(index);
+                    atuador.Valor = message;
+                    AtuadorList.Insert(index, atuador);
+                }
+
+            } else if (topic.StartsWith("alert"))
+            {
+                await DisplayAlert("alerta", message, "ok");
+            }
+        }
+
+        private async Task FetchData(object initData)
+        {
             AmbientesList = new ObservableCollection<Ambiente>();
 
             var ambientes = await ambienteService.BuscarAmbientes();
@@ -57,8 +103,6 @@ namespace iemobile.ViewModels
             {
                 EventosList.Add(item);
             }
-
-
         }
 
         public ObservableCollection<Ambiente> AmbientesList { get; set; }
@@ -104,13 +148,23 @@ namespace iemobile.ViewModels
                 }
                 else if (data is Evento)
                 {
-                    var activate = await Prompt("Acionar Evento", $"Deseja acionar o evento {((Evento)data).Nome}? ", "Sim", "Não");
-                    if (activate)
+                    if (((Evento)data).IsManual)
                     {
-                         ShowLoading();
-                         await Task.Delay(200);
-                        await DisplayAlert("Evento acionado com sucesso!");
+                        var activate = await Prompt("Acionar Evento", $"Deseja acionar o evento {((Evento)data).Nome}? ", "Sim", "Não");
+                        if (activate)
+                        {
+                            ShowLoading();
+                            var result = await eventoService.AcionarEventoManual((Evento)data);
+                            await DisplayAlert(result ? "Evento acionado com sucesso!" : "Verifique a conexão, não foi possível acionar o evento");
+                            if (result) { await FetchData(initData); }
+
+                        }
                     }
+                    else
+                    {
+                        await DisplayAlert(((Evento)data).Description);
+                    }
+
                 }
                 else
                 {

@@ -6,36 +6,25 @@ using iemobile.Models;
 
 namespace iemobile.Services
 {
-    public class AtuadorService : IAtuadorService
+    public class AtuadorService : BaseService, IAtuadorService
     {
+        public AtuadorService() : base("Actuator")
+        {
+
+        }
+
         public async Task<IEnumerable<Atuador>> BuscarAtuadores(Ambiente ambiente)
         {
-            await Task.Delay(15);
-
-            return new List<Atuador>
+            try
             {
-                new Atuador
-                {
-                    Icone = "",
-                    Nome = "Lâmpada 1",
-                    Valor = "1",
-                    UnidadeMedida = "Desligada|Ligada"
-                },
-                new Atuador
-                {
-                    Icone = "",
-                    Nome = "Projetor",
-                    Valor = "0",
-                    UnidadeMedida = "Desligado|Ligado"
-                },
-                new Atuador
-                {
-                    Icone = "",
-                    Nome = "Ar Condicionado",
-                    Valor = "21",
-                    UnidadeMedida = "Cº"
-                }
-            };
+                var result = await GetFromWebApi<IEnumerable<Atuador>>($"GetByEnvironmentId/{ambiente.Id}");
+
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

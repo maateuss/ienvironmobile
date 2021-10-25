@@ -10,8 +10,8 @@
 
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,15">
        <Grid.RowDefinitions>
-           <RowDefinition Height="2*"/>
-           <RowDefinition Height="2*"/>
+           <RowDefinition Height="1*"/>
+           <RowDefinition Height="1.5*"/>
            <RowDefinition Height="80"/>
        </Grid.RowDefinitions>
         <ffimage:SvgCachedImage WidthRequest="100" Margin="35,10" HeightRequest="100" Source="resource://iemobile.Resources.MainLogo.svg"/>
@@ -21,28 +21,43 @@
             <Frame >
                   <Grid BackgroundColor="Transparent">
                       <Grid.RowDefinitions>
-                          <RowDefinition Height="30"/>
+                          <RowDefinition Height="40"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
                           <ColumnDefinition Width="*"/>
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="👤" Opacity="0.5"/>
-                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="Nome"/>
+                     <Entry Grid.Column="1" Text="{Binding Name}" Placeholder="Nome"/>
                   </Grid>
 
             </Frame>
              <Frame >
                   <Grid BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
-                          <RowDefinition Height="30"/>
+                          <RowDefinition Height="40"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
                           <ColumnDefinition Width="*"/>
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="✉️" Opacity="0.5"/>
-                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="E-mail"/>
+                     <Entry Grid.Column="1" Text="{Binding Email}" Placeholder="E-mail"/>
+                  </Grid>
+
+            </Frame>
+
+               <Frame >
+                  <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="40"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="6*"/>
+                      </Grid.ColumnDefinitions>
+                     <Label Text="✉️" Opacity="0.5"/>
+                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="Login"/>
                   </Grid>
 
             </Frame>
@@ -50,14 +65,14 @@
               <Frame>
                   <Grid BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
-                          <RowDefinition Height="30"/>
+                          <RowDefinition Height="40"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
                           <ColumnDefinition Width="*"/>
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="🔓" Opacity="0.5"/>
-                     <Entry Grid.Column="1"  Placeholder="Senha" IsPassword="True"/>
+                     <Entry Grid.Column="1" Text="{Binding Senha}"  Placeholder="Senha" IsPassword="True"/>
                   </Grid>
               </Frame>
               <Button Text="Cadastrar"  Command="{Binding CadastrarCommand}"/>

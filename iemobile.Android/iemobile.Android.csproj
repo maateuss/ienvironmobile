@@ -84,7 +84,6 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="FodyWeavers.xml" />
-    <None Include="Resources\614-ok.json" />
     <None Include="Resources\email.json" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +110,9 @@
       <Project>{A01C1FD9-D094-48F1-A4B2-429943938ADC}</Project>
       <Name>iemobile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\614-ok.json" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

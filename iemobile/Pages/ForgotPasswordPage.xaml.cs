@@ -11,6 +11,8 @@ namespace iemobile.Pages
         {
             InitializeComponent();
 
+
+            
             NavigationPage.SetHasNavigationBar(this, false);
         }
     }

@@ -12,7 +12,7 @@ namespace iemobile.ViewModels
     public class MainViewModel : BaseViewModel
     {
 
-
+        public string Username { get; set; }
         public ICommand SelectedAmbienteCommand { get; }
         public ICommand EditUserCommand { get; }
 
@@ -47,6 +47,7 @@ namespace iemobile.ViewModels
             this.ambienteService = ambienteService;
             SelectedAmbienteCommand = new Command<Ambiente>(async (ambiente) => await SelectedAmbienteAsync(ambiente));
             EditUserCommand = new Command(async () => await EditUserAsync());
+            Username = preferences.Username;
         }
         private async Task EditUserAsync()
         {

@@ -9,11 +9,13 @@ namespace iemobile.ViewModels
     {
         public ICommand GoBackCommand { get; }
         public ICommand EditUserCommand { get; }
+        public ICommand LogoutCommand { get; }
 
         public EditUserViewModel()
         {
             GoBackCommand = new Command(async () => await CoreMethods.PopPageModel());
             EditUserCommand = new Command(async () => await CoreMethods.PopPageModel());
+            LogoutCommand = new Command(async () => await CoreMethods.PushPageModelWithNewNavigation<LoginViewModel>(""));
         }
 
 

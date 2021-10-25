@@ -22,7 +22,11 @@
                          <ffimage:SvgCachedImage  HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center"  Source="resource://iemobile.Resources.Voltar.svg" />
                     <Button BackgroundColor="Transparent" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding GoBackCommand}"/>
                 <Label  Grid.Column="1" Margin="15"  Text="Meu Perfil"/>
-                <Label  Grid.Column="2" Margin="15"  Text="Sair"/>
+                <Label  Grid.Column="2" Margin="15"  Text="Sair">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 </Grid>
                <Grid Grid.Row="1" BackgroundColor="{StaticResource CustomBackground}" VerticalOptions="Center" HorizontalOptions="Center">
                    <Grid.ColumnDefinitions>
@@ -41,8 +45,7 @@
                        <ColumnDefinition Width="3.7*"/>
                        <ColumnDefinition Width="*"/>
                    </Grid.ColumnDefinitions>
-                    <xct:AvatarView Text="MS" Size="150" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"  Grid.ColumnSpan="2"/>
-                    <Button Text="📷" Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="15" />
+                    <xct:AvatarView Text="{Binding Initials}" Size="150" VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"  Grid.ColumnSpan="2"/>
                    </Grid>
                </Grid>
                <ScrollView Grid.Row="2" Margin="20,20,20,0" >
@@ -57,7 +60,7 @@
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="👤" Opacity="0.5"/>
-                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="Nome"/>
+                     <Entry Grid.Column="1" Text="{Binding Name}" Placeholder="Nome"/>
                   </Grid>
 
             </Frame>
@@ -71,7 +74,7 @@
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="✉️" Opacity="0.5"/>
-                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="E-mail"/>
+                     <Entry Grid.Column="1" Text="{Binding Email}" Placeholder="E-mail"/>
                   </Grid>
 
             </Frame>
@@ -86,7 +89,7 @@
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="🔓" Opacity="0.5"/>
-                     <Entry Grid.Column="1"  Placeholder="Senha atual" IsPassword="True"/>
+                     <Entry Grid.Column="1" Text="{Binding SenhaAtual}" Placeholder="Senha atual" IsPassword="True"/>
                   </Grid>
               </Frame>
                    <Frame>
@@ -99,7 +102,7 @@
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="🔓" Opacity="0.5"/>
-                     <Entry Grid.Column="1"  Placeholder="Nova senha" IsPassword="True"/>
+                     <Entry Grid.Column="1" Text="{Binding NovaSenha}"  Placeholder="Nova senha" IsPassword="True"/>
                   </Grid>
               </Frame>
                         <Frame>
@@ -112,7 +115,7 @@
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="🔓" Opacity="0.5"/>
-                     <Entry Grid.Column="1"  Placeholder="Confirmar senha" IsPassword="True"/>
+                     <Entry Grid.Column="1" Text="{Binding ConfirmarSenha}"  Placeholder="Confirmar senha" IsPassword="True"/>
                   </Grid>
               </Frame>
               <Button Text="Confirmar mudanças"  Command="{Binding CadastrarCommand}"/>

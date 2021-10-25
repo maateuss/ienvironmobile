@@ -24,6 +24,7 @@ namespace iemobile
             FreshIOC.Container.Register<ISensorService, SensorService>();
             FreshIOC.Container.Register<IAmbienteService, AmbienteService>();
             FreshIOC.Container.Register<IAtuadorService, AtuadorService>();
+            FreshIOC.Container.Register<IUserService, UserService>();
             FreshIOC.Container.Register<IEventoService, EventoService>();
         }
 

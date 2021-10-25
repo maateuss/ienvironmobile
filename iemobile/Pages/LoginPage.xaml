@@ -21,36 +21,31 @@
               <Frame>
                   <Grid BackgroundColor="Transparent">
                        <Grid.RowDefinitions>
-                          <RowDefinition Height="30"/>
+                          <RowDefinition Height="40"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
                           <ColumnDefinition Width="*"/>
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="✉️" Opacity="0.5"/>
-                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="E-mail"/>
+                     <Entry Grid.Column="1" Text="{Binding Login}" Placeholder="Login"/>
                   </Grid>
 
             </Frame>
               <Frame >
                   <Grid BackgroundColor="Transparent">
                               <Grid.RowDefinitions>
-                          <RowDefinition Height="30"/>
+                          <RowDefinition Height="40"/>
                       </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
                           <ColumnDefinition Width="*"/>
                           <ColumnDefinition Width="6*"/>
                       </Grid.ColumnDefinitions>
                      <Label Text="🔓" Opacity="0.5"/>
-                     <Entry Grid.Column="1"  Placeholder="Senha" IsPassword="True"/>
+                     <Entry Grid.Column="1" VerticalOptions="FillAndExpand" Placeholder="Senha" Text="{Binding Senha}" IsPassword="True"/>
                   </Grid>
               </Frame>
               <Button Text="Entrar"  Command="{Binding LoginCommand}"/>
-              <Label Text="Esqueci minha senha" Margin="0,20" >
-                  <Label.GestureRecognizers>
-                      <TapGestureRecognizer Command="{Binding EsqueceuSenhaCommand}"/>
-                  </Label.GestureRecognizers>
-              </Label>
           </StackLayout>
        <Label Text="Criar uma conta" Grid.Row="2" VerticalTextAlignment="Center" TextColor="{StaticResource CustomPink}">
            <Label.GestureRecognizers>

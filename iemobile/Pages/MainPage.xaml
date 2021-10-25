@@ -21,8 +21,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="Bem vindo," HorizontalTextAlignment="Start" VerticalTextAlignment="End"/>
-                    <Label Text="Matheus Alberto" TextColor="{StaticResource CustomPink}" Grid.Row="1" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
-                    <ffimage:SvgCachedImage  Grid.Column="1" Margin="15" Grid.RowSpan="2" Source="resource://iemobile.Resources.qrcode.svg" />
+                    <Label Text="{Binding Username}" TextColor="{StaticResource CustomPink}" Grid.Row="1" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
+                    <!--<ffimage:SvgCachedImage  Grid.Column="1" Margin="15" Grid.RowSpan="2" Source="resource://iemobile.Resources.qrcode.svg" />
          
              
 
@@ -30,7 +30,7 @@
                     <xct:AvatarView.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding EditUserCommand}"/>
                     </xct:AvatarView.GestureRecognizers>
-                </xct:AvatarView>
+                </xct:AvatarView>-->
                 </Grid>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
                    <Grid.ColumnDefinitions>

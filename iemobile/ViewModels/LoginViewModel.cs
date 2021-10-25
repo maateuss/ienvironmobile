@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using iemobile.Interfaces;
+using iemobile.Models;
 using Xamarin.Forms;
 
 namespace iemobile.ViewModels
@@ -12,11 +14,14 @@ namespace iemobile.ViewModels
         public ICommand CriarContaCommand { get; }
         public string Senha { get; set; }
         public string Login { get; set; }
-        public LoginViewModel()
+        private readonly IUserService userService;
+        public LoginViewModel(IUserService userService)
         {
+            this.userService = userService;
             LoginCommand = new Command(async () => await LoginAsync());
             CriarContaCommand = new Command(async () => await CriarContaAsync());
             EsqueceuSenhaCommand = new Command(async () => await EsqueceuSenhaAsync());
+            Login = preferences.User;
         }
 
 
@@ -30,12 +35,25 @@ namespace iemobile.ViewModels
             ShowLoading();
             try
             {
-                if (string.IsNullOrEmpty(Login))
+                if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Senha))
                 {
-                    await DisplayAlert("Preencha o login!");
+                    await DisplayAlert("Preencha o login e a senha!");
+                    return;
                 }
 
-                await CoreMethods.PushPageModelWithNewNavigation<MainViewModel>(Login);
+                var login = new Login { login = Login, password = Senha };
+
+                var result = await userService.Login(login);
+
+                preferences.Token = result.Token;
+                preferences.RefreshKey = result.RefreshToken;
+                preferences.Username = result.UserData.Name;
+                preferences.User = result.UserData.Login;
+
+                if (result != null)
+                {
+                    await CoreMethods.PushPageModelWithNewNavigation<MainViewModel>(Login);
+                }
             }
             catch (Exception ex)
             {

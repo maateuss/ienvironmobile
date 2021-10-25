@@ -15,7 +15,13 @@ namespace iemobile.ViewModels
     public class BaseViewModel : FreshBasePageModel
     {
         public bool IsBusy { get; set; }
+        public PreferencesAccessLayer preferences;
         protected IUserDialogs PageDialog = UserDialogs.Instance;
+
+        public BaseViewModel()
+        {
+            preferences = new PreferencesAccessLayer();
+        }
 
         protected Task DisplayAlert(string title, string message, string cancel)
         {

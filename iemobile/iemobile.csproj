@@ -21,6 +21,7 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.10" />
+    <PackageReference Include="MQTTnet" Version="3.0.16" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Xamarin.FFImageLoading.Svg" />
@@ -41,6 +42,7 @@
     <None Remove="Resources\Sair.svg" />
     <None Remove="Resources\Voltar.svg" />
     <None Remove="Com.Airbnb.Xamarin.Forms.Lottie" />
+    <None Remove="MQTTnet" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

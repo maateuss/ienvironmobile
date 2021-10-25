@@ -41,6 +41,7 @@ gradient;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/1/jl/res/drawa
 ImageView;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/1/jl/res/layout/loadingimage.xml
 item;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/56/jl/res/values/styles.xml
 item;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/7/jl/res/values/values.xml
+item;obj/Debug/res/values/styles.xml
 LinearLayout;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/56/jl/res/layout/bottomtablayout.xml
 paths;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/55/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
 ProgressBar;/Users/mateus/src/iemobile/iemobile.Android/obj/Debug/lp/1/jl/res/layout/loading.xml
