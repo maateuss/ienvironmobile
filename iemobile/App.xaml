@@ -39,7 +39,6 @@
             <Setter Property="BackgroundColor" Value="Transparent"/>
             <Setter Property="Visual" Value="Material"/>
             <Setter Property="TextColor" Value="{StaticResource CustomWhite}"/>
-            <Setter Property="Keyboard" Value="Email"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}"/>

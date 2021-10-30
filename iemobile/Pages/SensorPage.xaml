@@ -35,7 +35,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <CollectionView ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding AmbientesList}">
+                <CollectionView SelectionMode="Single" SelectedItem="{Binding AmbienteSelected}" ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding AmbientesList}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal"/>
             </CollectionView.ItemsLayout>
@@ -47,8 +47,23 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
+
                                 <Frame CornerRadius="25" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
 
+                                <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">                        
+                                 <VisualState Name="Selected">
+                                <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}" />
+                                </VisualState.Setters>
+                             </VisualState>
+                                     <VisualState Name="Normal">
+                                <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}" />
+                                </VisualState.Setters>
+                             </VisualState>
+                             </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding NomeAmbiente}" Margin="10,0" LineBreakMode="TailTruncation" HorizontalTextAlignment="Center" />
                                 </StackLayout>

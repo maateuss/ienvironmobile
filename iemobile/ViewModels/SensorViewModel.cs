@@ -16,7 +16,7 @@ namespace iemobile.ViewModels
         public ICommand GoBackCommand { get; }
         public ICommand SelectedDataCommand { get; }
         public ICommand EditUserCommand { get; }
-
+        public Ambiente AmbienteSelected { get; set; }
         private MqttService mqttService;
         private object initData;
 
