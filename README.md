@@ -20,4 +20,4 @@ Feito com ❤️ por Fábio Ceolin, Mateus Moura Santos, Matheus Alberto, Matheu
 [![Github Badge](https://img.shields.io/badge/GitHub-Fábio_Ceolin-100000?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/fabioceolin)](https://github.com/fabioceolin) 
 [![Github Badge](https://img.shields.io/badge/GitHub-Mateus_Moura-100000?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/maateuss)](https://github.com/maateuss) 
 [![Github Badge](https://img.shields.io/badge/GitHub-Matheus_Alberto-100000?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/mathBarreto)](https://github.com/mathBarreto) 
-[![Github Badge](https://img.shields.io/badge/GitHub-Mathues_Barreto-100000?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/matheusalberto06)](https://github.com/matheusalberto06) 
+[![Github Badge](https://img.shields.io/badge/GitHub-Matheus_Barreto-100000?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/matheusalberto06)](https://github.com/matheusalberto06) 
