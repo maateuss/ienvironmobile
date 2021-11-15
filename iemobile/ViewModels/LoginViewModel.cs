@@ -15,6 +15,7 @@ namespace iemobile.ViewModels
         public string Senha { get; set; }
         public string Login { get; set; }
         private readonly IUserService userService;
+        
         public LoginViewModel(IUserService userService)
         {
             this.userService = userService;
@@ -45,10 +46,20 @@ namespace iemobile.ViewModels
 
                 var result = await userService.Login(login);
 
+                if(result == null)
+                {
+                    await DisplayAlert("Usuário ou senha inválidos!");
+                    return;
+                }
+
                 preferences.Token = result.Token;
                 preferences.RefreshKey = result.RefreshToken;
                 preferences.Username = result.UserData.Name;
                 preferences.User = result.UserData.Login;
+
+                var mqttServer = await userService.FetchMqttBrokerUrl();
+
+                Settings.MqttEndpoint = mqttServer;
 
                 if (result != null)
                 {
@@ -57,7 +68,7 @@ namespace iemobile.ViewModels
             }
             catch (Exception ex)
             {
-
+                await DisplayAlert("Usuário ou senha inválidos!");
             }
             finally
             {

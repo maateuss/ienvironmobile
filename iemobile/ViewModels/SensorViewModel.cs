@@ -15,6 +15,8 @@ namespace iemobile.ViewModels
     {
         public ICommand GoBackCommand { get; }
         public ICommand SelectedDataCommand { get; }
+        public ICommand SelectionChangedCommand { get; }
+
         public ICommand EditUserCommand { get; }
         public Ambiente AmbienteSelected { get; set; }
         private MqttService mqttService;
@@ -126,6 +128,10 @@ namespace iemobile.ViewModels
             SelectedDataCommand = new Command<object>(async (data) => await SelectedDataAsync(data));
             GoBackCommand = new Command(async () => await CoreMethods.PopPageModel());
             EditUserCommand = new Command(async () => await CoreMethods.PushPageModel<EditUserViewModel>());
+            SelectionChangedCommand = new Command(async () =>
+            {
+                Debug.WriteLine(AmbienteSelected.DescricaoAmbiente);
+            });
         }
 
 

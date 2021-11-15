@@ -8,6 +8,23 @@
     xmlns:ffimage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Name="GerenciamentoPage"
     x:Class="iemobile.Pages.SensorPage">
+    <ContentPage.Resources>
+        <!--<Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource CustomPink}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>-->
+    </ContentPage.Resources>
     <ContentPage.Content>
             <Grid VerticalOptions="FillAndExpand"  Margin="0,20,0,0"   BackgroundColor="{StaticResource CustomBlackMedium}">
             <Grid.RowDefinitions>
@@ -29,13 +46,18 @@
                                             <TapGestureRecognizer Command="{Binding EditUserCommand}"/>
                     </xct:AvatarView.GestureRecognizers>
                 </xct:AvatarView>-->
+                    <Label Text="Sair" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TappedSairCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <CollectionView SelectionMode="Single" SelectedItem="{Binding AmbienteSelected}" ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding AmbientesList}">
+                <CollectionView SelectionMode="Single" SelectionChangedCommand="{Binding SelectionChangedCommand}" SelectedItem="{Binding AmbienteSelected}" ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding AmbientesList}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal"/>
             </CollectionView.ItemsLayout>
@@ -48,24 +70,26 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Frame CornerRadius="25" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                                <Frame CornerRadius="5" BackgroundColor="Transparent" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
 
-                                <VisualStateManager.VisualStateGroups>
+                                <!--<VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup Name="CommonStates">                        
-                                 <VisualState Name="Selected">
-                                <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}" />
-                                </VisualState.Setters>
-                             </VisualState>
-                                     <VisualState Name="Normal">
-                                <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}" />
-                                </VisualState.Setters>
-                             </VisualState>
-                             </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
+                                    <VisualState x:Name="Normal" />
+
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{StaticResource CustomPink}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{StaticResource CustomBlackMedium}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>-->
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding NomeAmbiente}" Margin="10,0" LineBreakMode="TailTruncation" HorizontalTextAlignment="Center" />
+                                    <Label Text="{Binding NomeAmbiente}" LineBreakMode="TailTruncation" HorizontalTextAlignment="Center" />
                                 </StackLayout>
                                 </Frame>
                             </Grid>

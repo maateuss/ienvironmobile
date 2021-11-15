@@ -19,6 +19,12 @@ namespace iemobile
             MainPage.BackgroundColor = Color.FromHex("#181B23");
         }
 
+        public void RestartApp()
+        {
+            MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<LoginViewModel>());
+            MainPage.BackgroundColor = Color.FromHex("#181B23");
+        }
+
 
         protected void InitIoC() {
             FreshIOC.Container.Register<ISensorService, SensorService>();

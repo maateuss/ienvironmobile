@@ -19,4 +19,8 @@ namespace iemobile.Models
         public string RefreshToken { get; set; }
     }
 
+    public class MqttBrokerEndpoint
+    {
+        public string MqttBrokerAddress { get; set; }
+    }
 }

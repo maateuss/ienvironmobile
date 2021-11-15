@@ -8,5 +8,6 @@ namespace iemobile.Interfaces
     {
         Task<UserRequest> Login(Login login);
         Task<bool> Create(NewUserRequest newUser);
+        Task<string> FetchMqttBrokerUrl();
     }
 }

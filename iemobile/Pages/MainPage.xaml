@@ -31,6 +31,11 @@
                                             <TapGestureRecognizer Command="{Binding EditUserCommand}"/>
                     </xct:AvatarView.GestureRecognizers>
                 </xct:AvatarView>-->
+                            <Label Text="Sair" Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TappedSairCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource CustomBackground}" >
                    <Grid.ColumnDefinitions>

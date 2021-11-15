@@ -32,6 +32,18 @@ namespace iemobile.Services
             }
         }
 
+        public async Task<string> FetchMqttBrokerUrl()
+        {
+            var result =  await GetFromWebApi<MqttBrokerEndpoint>("FetchMqttServerAddress");
+            if(result != null)
+            {
+                return result.MqttBrokerAddress;
+            }
+
+            return "127.0.0.1";
+
+        }
+
         public async Task<UserRequest> Login(Login login)
         {
             try

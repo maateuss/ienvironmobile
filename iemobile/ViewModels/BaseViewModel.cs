@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using FreshMvvm;
 using Newtonsoft.Json;
@@ -17,10 +18,16 @@ namespace iemobile.ViewModels
         public bool IsBusy { get; set; }
         public PreferencesAccessLayer preferences;
         protected IUserDialogs PageDialog = UserDialogs.Instance;
+        public ICommand TappedSairCommand { get; }
 
         public BaseViewModel()
         {
             preferences = new PreferencesAccessLayer();
+            TappedSairCommand = new Command(() =>
+            {
+                Application.Current.MainPage = new FreshNavigationContainer(FreshPageModelResolver.ResolvePageModel<LoginViewModel>());
+                Application.Current.MainPage.BackgroundColor = Color.FromHex("#181B23");
+            });
         }
 
         protected Task DisplayAlert(string title, string message, string cancel)
